@@ -16,6 +16,7 @@ gulp.task('serve.coverage', task('serve.coverage'));
 gulp.task('build.dev', done =>
   runSequence('clean.dev',
               'tslint',
+              'build.sass.dev',
               'build.assets.dev',
               'build.js.dev',
               'build.index.dev',
@@ -33,8 +34,10 @@ gulp.task('build.dev.watch', done =>
 gulp.task('build.prod', done =>
   runSequence('clean.prod',
               'tslint',
+              'build.sass.prod',
               'build.assets.prod',
               'build.html_css.prod',
+              'build.js_preinline.prod',
               'build.js.prod',
               'build.bundles',
               'build.bundles.app',
