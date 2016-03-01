@@ -7,7 +7,7 @@ import {NameListService} from '../../shared/services/name-list.service';
   selector: 'sd-home',
   moduleId: module.id,
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class HomeComponent {

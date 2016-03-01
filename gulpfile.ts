@@ -34,6 +34,7 @@ gulp.task('build.dev.watch', done =>
 gulp.task('build.e2e', done =>
   runSequence('clean.dev',
               'tslint',
+              'build.sass.dev',
               'build.assets.dev',
               'build.js.e2e',
               'build.index.dev',
@@ -57,6 +58,7 @@ gulp.task('build.prod', done =>
 gulp.task('build.test', done =>
   runSequence('clean.dev',
               'tslint',
+              'build.sass.dev',
               'build.assets.dev',
               'build.js.test',
               'build.index.dev',

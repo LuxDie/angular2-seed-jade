@@ -13,7 +13,16 @@ export = function buildJSTest(gulp, plugins) {
     ];
     let result = gulp.src(src)
       .pipe(plugins.plumber())
-      .pipe(plugins.inlineNg2Template({ base: APP_SRC, useRelativePaths: true }))
+      .pipe(plugins.inlineNg2Template({
+        useRelativePaths: true,
+        styleProcessor: function processor(ext, file) {
+          if (ext !== '.scss') {
+            return file;
+          }
+          return gulp.src(file)
+            .pipe(plugins.sass().on('error', plugins.sass.logError));
+        }
+      }))
       .pipe(plugins.typescript(tsProject));
 
     return result.js
