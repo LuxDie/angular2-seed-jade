@@ -29,16 +29,6 @@ gulp.task('build.dev.watch', done =>
               done));
 
 // --------------
-// Build e2e.
-gulp.task('build.e2e', done =>
-  runSequence('clean.dev',
-              'tslint',
-              'build.assets.dev',
-              'build.js.e2e',
-              'build.index.dev',
-              done));
-
-// --------------
 // Build prod.
 gulp.task('build.prod', done =>
   runSequence('clean.prod',
@@ -52,19 +42,9 @@ gulp.task('build.prod', done =>
               done));
 
 // --------------
-// Build test.
-gulp.task('build.test', done =>
-  runSequence('clean.dev',
-              'tslint',
-              'build.assets.dev',
-              'build.js.test',
-              'build.index.dev',
-              done));
-
-// --------------
 // Build test watch.
 gulp.task('build.test.watch', done =>
-  runSequence('build.test',
+  runSequence('build.dev',
               'watch.test',
               done));
 
@@ -87,7 +67,7 @@ gulp.task('serve.dev', done =>
 // --------------
 // Serve e2e
 gulp.task('serve.e2e', done =>
-  runSequence('build.e2e',
+  runSequence('build.dev',
               'server.start',
               'watch.serve',
               done));
@@ -103,6 +83,6 @@ gulp.task('serve.prod', done =>
 // --------------
 // Test.
 gulp.task('test', done =>
-  runSequence('build.test',
+  runSequence('build.dev',
               'karma.start',
               done));
